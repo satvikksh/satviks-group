@@ -80,7 +80,7 @@ const HomePage = ({ mode }) => {
             id: 1,
             image: "/img/cosmic-gate12.jpg",
             title: "Welcome to Satvik's Group",
-            subtitle: "Imaginary College of Infinite Possibilities",
+            subtitle: "Imaginary Technology or Infinite Possibilities",
             description: "Where imagination becomes reality and dreams take shape",
             button: { text: "Begin Your Journey", link: "/explore", variant: "outline-light" }
           },
@@ -178,7 +178,7 @@ const HomePage = ({ mode }) => {
             </Button>
           </div>
           <p className="text-muted mt-4">
-            Imaginary College is a conceptual space where boundaries don't exist. 
+            Imaginary Technology is a conceptual space where boundaries don't exist. 
             Founded by Satvik's Group as a thought experiment turned creative engine.
           </p>
         </div>
@@ -259,7 +259,7 @@ const HomePage = ({ mode }) => {
                     </Card.Text>
                     <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
                       <div>
-                        <small className="text-muted">Imaginary College</small>
+                        <small className="text-muted">Imaginary Technology</small>
                         <br />
                         <small className="fw-bold">Satvik's Group</small>
                       </div>
@@ -287,7 +287,7 @@ const HomePage = ({ mode }) => {
                 Ready to Imagine With Us?
               </h2>
               <p className="text-white-75 lead mb-4">
-                Join Satvik's Group at Imaginary College. No experience required—just bring your imagination.
+                Join Satvik's Group at Imaginary Technology. No experience required—just bring your imagination.
                 We're building concepts that have never been thought of before.
               </p>
               <Button 
@@ -365,7 +365,7 @@ const HomePage = ({ mode }) => {
           <hr className={mode === "dark" ? "bg-secondary" : ""} />
           <div className="text-center pt-4">
             <p className="mb-2">
-              © {new Date().getFullYear()} Satvik's Group • Imaginary College
+              © {new Date().getFullYear()} Satvik's Group • Imaginary Technology
             </p>
             <p className="text-muted small">
               This institution exists purely in imagination. All concepts, projects, and realms are fictional.
