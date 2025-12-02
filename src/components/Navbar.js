@@ -92,7 +92,7 @@ const SimpleNavbar = ({
           <Navbar.Brand as={Link} to="/" className="navbar-brand" onClick={() => setExpanded(false)}>
             <div className="brand-content">
               <Image 
-                src="/logo.png" 
+                src="/logo12.png" 
                 alt="Logo" 
                 className="navbar-logo"
               />
