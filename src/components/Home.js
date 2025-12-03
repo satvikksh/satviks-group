@@ -2,9 +2,16 @@ import { useEffect, useState, useMemo } from "react";
 import { Container, Row, Col, Carousel, Card, Button, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import "./Home.css"; // Import external CSS
 
 const HomePage = ({ mode }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isDarkMode, setIsDarkMode] = useState(mode === "dark" || mode === "#18191a");
+
+  // Update dark mode state when mode changes
+  useEffect(() => {
+    setIsDarkMode(mode === "dark" || mode === "#18191a");
+  }, [mode]);
 
   const cardsData = useMemo(
     () => [
@@ -73,14 +80,14 @@ const HomePage = ({ mode }) => {
   }, []);
 
   return (
-    <div className={`HomePage ${mode === "#18191a" ? "bg-dark text-light" : ""}`}>
+    <div className={`HomePage ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <Carousel fade interval={4000} className="carousel-imaginary">
         {[
           {
             id: 1,
             image: "/img/cosmic-gate12.jpg",
             title: "Welcome to Satvik's Group",
-            subtitle: "Imaginary Technology or Infinite Possibilities",
+            subtitle: "Imaginary Technology and Infinite Possibilities",
             description: "Where imagination becomes reality and dreams take shape",
             button: { text: "Begin Your Journey", link: "/explore", variant: "outline-light" }
           },
@@ -107,8 +114,6 @@ const HomePage = ({ mode }) => {
               style={{
                 backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url(${slide.image})`,
                 height: windowWidth > 768 ? "85vh" : "60vh",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
                 cursor: 'pointer'
               }}
               onClick={() => window.open("/manifesto", "_self")}
@@ -207,10 +212,10 @@ const HomePage = ({ mode }) => {
           </Col>
         </div>
 
-        <h2 className={`text-center mb-5 ${mode === "dark" ? "text-light" : ""}`}>
+        <h2 className={`text-center mb-5 ${isDarkMode ? "text-light" : ""}`}>
           <span className="section-title">Imaginary Initiatives</span>
         </h2>
-        <p className={`text-center mb-5 ${mode === "dark" ? "text-light" : ""}`}>
+        <p className={`text-center mb-5 ${isDarkMode ? "text-light" : ""}`}>
           Explore our ongoing conceptual projects. Each represents an exploration into 
           what could exist if reality were more... flexible.
         </p>
@@ -221,7 +226,7 @@ const HomePage = ({ mode }) => {
               <Link to={card.link} style={{ textDecoration: 'none' }}>
                 <Card
                   className={`h-100 shadow-lg border-0 card-imaginary ${
-                    mode === "dark" ? "bg-dark text-light" : ""
+                    isDarkMode ? "bg-dark text-light" : ""
                   }`}
                   style={{ 
                     overflow: 'hidden',
@@ -252,9 +257,9 @@ const HomePage = ({ mode }) => {
                       {card.category}
                     </div>
                   </div>
-                  <Card.Body className={`${mode === "dark" ? "bg-dark-50" : ""}`}>
+                  <Card.Body className={`${isDarkMode ? "bg-dark text-light" : ""}`}>
                     <Card.Title className="h3 mb-3 fw-bold">{card.title}</Card.Title>
-                    <Card.Text className={mode === "dark" ? "text-light-75" : "text-muted"}>
+                    <Card.Text className={isDarkMode ? "text-light" : "text-muted"}>
                       {card.text}
                     </Card.Text>
                     <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
@@ -279,7 +284,7 @@ const HomePage = ({ mode }) => {
         </Row>
       </Container>
 
-      <div className="py-5" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+      <div className="py-5 cta-section">
         <Container>
           <Row className="align-items-center">
             <Col md={6}>
@@ -310,7 +315,7 @@ const HomePage = ({ mode }) => {
         </Container>
       </div>
 
-      <footer className={`py-5 ${mode === "dark" ? "bg-dark text-light" : "bg-light"}`}>
+      <footer className={`py-5 ${isDarkMode ? "bg-dark text-light" : "bg-light"}`}>
         <Container>
           <Row>
             <Col lg={4} className="mb-4">
@@ -356,13 +361,13 @@ const HomePage = ({ mode }) => {
                 </Button>
                 <div className="mt-3">
                   <small className="text-muted">
-                    Email: imagination@satviksgroup.imaginary
+                    Email: imagination@satviksgroup.tech
                   </small>
                 </div>
               </div>
             </Col>
           </Row>
-          <hr className={mode === "dark" ? "bg-secondary" : ""} />
+          <hr className={isDarkMode ? "bg-secondary" : ""} />
           <div className="text-center pt-4">
             <p className="mb-2">
               © {new Date().getFullYear()} Satvik's Group • Imaginary Technology
@@ -378,184 +383,6 @@ const HomePage = ({ mode }) => {
           </div>
         </Container>
       </footer>
-
-      <style jsx>{`
-        .carousel-imaginary .carousel-item {
-          transition: transform 2s ease-in-out;
-        }
-        
-        .carousel-background {
-          background-size: cover;
-          background-position: center;
-        }
-        
-        .animated-caption {
-          animation: fadeInUp 1.5s ease-out;
-        }
-        
-        .gradient-text {
-          background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        .text-gradient {
-          background: linear-gradient(45deg, #4facfe, #00f2fe);
-          -webkit-background-clip: text;
-          -webkit-text-flower-color: transparent;
-          background-clip: text;
-        }
-        
-        .glow-button {
-          box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
-          transition: all 0.3s ease;
-        }
-        
-        .glow-button:hover {
-          box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
-          transform: translateY(-2px);
-        }
-        
-        .pulse-button {
-          animation: pulse 2s infinite;
-        }
-        
-        .floating-button {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .feature-card {
-          border-radius: 20px;
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-          transform: translateY(-10px);
-        }
-        
-        .feature-icon {
-          font-size: 3rem;
-        }
-        
-        .section-title {
-          position: relative;
-          display: inline-block;
-        }
-        
-        .section-title::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 25%;
-          width: 50%;
-          height: 3px;
-          background: linear-gradient(45deg, #667eea, #764ba2);
-          border-radius: 2px;
-        }
-        
-        .card-imaginary {
-          border-radius: 20px;
-          overflow: hidden;
-        }
-        
-        .card-image-container {
-          height: 200px;
-          overflow: hidden;
-        }
-        
-        .card-image-imaginary {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
-        }
-        
-        .card-imaginary:hover .card-image-imaginary {
-          transform: scale(1.1);
-        }
-        
-        .card-tag {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          z-index: 2;
-        }
-        
-        .card-category {
-          position: absolute;
-          bottom: 15px;
-          left: 15px;
-          background: rgba(0, 0, 0, 0.7);
-          color: white;
-          padding: 5px 10px;
-          border-radius: 10px;
-          font-size: 0.8rem;
-        }
-        
-        .footer-link {
-          color: inherit;
-          text-decoration: none;
-          transition: all 0.3s ease;
-          opacity: 0.8;
-        }
-        
-        .footer-link:hover {
-          opacity: 1;
-          padding-left: 5px;
-        }
-        
-        .logo-imaginary {
-          font-size: 2rem;
-          margin-right: 10px;
-        }
-        
-        .highlight {
-          background: linear-gradient(45deg, #ff6b6b, #ffd93d);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          font-weight: bold;
-        }
-        
-        .text-shadow {
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes pulse {
-          0% {
-            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
-          }
-          70% {
-            box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
-          }
-        }
-        
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-      `}</style>
     </div>
   );
 };

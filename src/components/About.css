@@ -1,0 +1,283 @@
+/* Base About page layout */
+.about-page {
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* Use global theme (body.dark-mode / body.light-mode) from App.css */
+
+/* Sections that depend on mode */
+body.dark-mode .bg-section {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+body.light-mode .bg-section {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/img/cosmic-bg.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 4rem 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-year {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  background: #f8fafc;
+  color: #667eea;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  border: 2px solid #667eea;
+  min-width: 70px;
+  text-align: center;
+}
+
+/* Dark mode override for timeline year */
+body.dark-mode .timeline-year {
+  background: #1e293b;
+}
+
+/* Mission & Vision */
+.mission-icon,
+.vision-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.vision-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vision-tab {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+body.dark-mode .vision-tab {
+  background: #1e293b;
+}
+
+.vision-tab:hover {
+  border-color: #667eea;
+}
+
+.vision-tab.active {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.vision-tab-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vision-tab-content {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+body.dark-mode .vision-tab-content {
+  border-top-color: #334155;
+}
+
+/* Core Values */
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Team Section */
+.team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+.team-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-image {
+  transform: scale(1.1);
+}
+
+.team-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.team-card:hover .team-overlay {
+  opacity: 1;
+}
+
+.team-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.team-quote {
+  font-style: italic;
+  color: #64748b;
+  border-left: 3px solid #667eea;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+body.dark-mode .team-quote {
+  color: #94a3b8;
+}
+
+/* Imaginary College stats */
+.stat-number {
+  color: #667eea;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+body.dark-mode .stat-label {
+  color: #94a3b8;
+}
+
+/* Join Section */
+.join-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6rem 0;
+}
+
+.max-width-800 {
+  max-width: 800px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .display-3 {
+    font-size: 2.5rem;
+  }
+  
+  .display-5 {
+    font-size: 2rem;
+  }
+  
+  .hero-section {
+    min-height: 60vh;
+  }
+  
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-year {
+    left: -35px;
+    font-size: 0.9rem;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .display-3 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+  
+  .team-image-container {
+    height: 200px;
+  }
+}

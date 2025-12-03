@@ -2,45 +2,13 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.app-container {
-  min-height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .main-content {
@@ -49,44 +17,93 @@
   margin: 0 auto;
 }
 
-/* System-responsive base styles */
+/* 🎨 THEME VARIABLES (default dark) */
 :root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-  }
-}
-
-/* App.css (Add these styles) */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --primary-color: #007bff;
-  --transition-speed: 0.3s;
-}
-
-[data-theme="dark"] {
   --bg-color: #121212;
   --text-color: #ffffff;
   --primary-color: #0d6efd;
+  --transition-speed: 0.3s;
 }
 
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* 🌙 Light mode override */
+body.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #1e293b;
+  --primary-color: #007bff;
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color var(--transition-speed);
 }
 
+/* 🌙 Dark mode override */
+body.dark-mode {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* 🧩 Bootstrap components dark mode fixes */
+body.dark-mode .card {
+  background-color: #1e1e1e !important;
+  border-color: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode .accordion-item {
+  background-color: #1e1e1e !important;
+  border-color: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode .accordion-button {
+  background-color: #020617 !important;
+  color: #ffffff !important;
+  border-color: #2d2d2d;
+}
+
+body.dark-mode .accordion-button:not(.collapsed) {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .btn-outline-light {
+  border-color: #e5e7eb;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-outline-light:hover {
+  background-color: #ffffff20;
+  color: #ffffff;
+}
+
+body.dark-mode a {
+  color: #93c5fd;
+}
+
+body.dark-mode a:hover {
+  color: #bfdbfe;
+}
+
+/* 🧾 Form controls */
+body.dark-mode .form-control {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-color: #3d3d3d;
+}
+
+body.dark-mode .form-control:focus {
+  background-color: #3d3d3d;
+  color: #ffffff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem var(--primary-color / 25%);
+}
+
+/* ⚪ Text helpers */
+body.dark-mode .text-muted {
+  color: #a0a0a0 !important;
+}
+
+/* 🌀 Loader */
 .loading-spinner {
-  border: 4px solid #f3f3f3;
+  border: 4px solid #2d2d2d;
   border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   width: 40px;
@@ -100,36 +117,8 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive Media Queries */
+/* 📱 Responsive Queries */
 @media (max-width: 768px) {
   .carousel-caption h5 { font-size: 1.25rem; }
   .card-title { font-size: 1.1rem; }
 }
-/* 4. Add these styles to App.css */
-.dark-theme {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-.dark-theme .card {
-  background-color: #1e1e1e !important;
-  border-color: #2d2d2d;
-}
-
-.dark-theme .form-control {
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border-color: #3d3d3d;
-}
-
-.dark-theme .form-control:focus {
-  background-color: #3d3d3d;
-  color: #ffffff;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
-.dark-theme .text-muted {
-  color: #a0a0a0 !important;
-}
-
