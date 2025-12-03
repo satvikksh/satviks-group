@@ -87,7 +87,7 @@ const HomePage = ({ mode }) => {
             id: 1,
             image: "/img/cosmic-gate12.jpg",
             title: "Welcome to Satvik's Group",
-            subtitle: "Imaginary Technology and Infinite Possibilities",
+            subtitle: "Imaginary Institute of Infinite Possibilities",
             description: "Where imagination becomes reality and dreams take shape",
             button: { text: "Begin Your Journey", link: "/explore", variant: "outline-light" }
           },

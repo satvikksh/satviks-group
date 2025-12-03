@@ -98,7 +98,7 @@ const SimpleNavbar = ({
               />
               <div className="brand-text">
                 <h1 className="brand-title">{title}</h1>
-                <p className="brand-subtitle">Imaginary Technology</p>
+                <p className="brand-subtitle">Imaginary Institute</p>
               </div>
             </div>
           </Navbar.Brand>
