@@ -62,7 +62,7 @@ const SimpleNavbar = ({
     { path: "/", label: "Home", icon: "🏠" },
     { path: "/about", label: "About", icon: "📚" },
     { path: "/projects", label: "Projects", icon: "⚡" },
-    { path: "/gallery", label: "Gallery", icon: "🖼️" },
+    { path: "/Playground", label: "Gallery", icon: "🖼️" },
     { path: "/community", label: "Community", icon: "👥" },
   ];
 
